@@ -10,7 +10,7 @@ namespace CardSearcher.Entities
 
     public class MagicCardResponseSingle
     {
-        public MagicCard Single { get; set; }
+        public MagicCard Card { get; set; }
     }
 
     public class MagicCard

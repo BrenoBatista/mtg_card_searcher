@@ -24,5 +24,19 @@ namespace CardSearcher.Entities.Services
 
             return null;
         }
+
+        public async Task<MagicCardResponseSingle> GetCardByIdAsync(string id)
+        {
+            string url = $"https://api.magicthegathering.io/v1/cards/{id}";
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<MagicCardResponseSingle>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            }
+
+            return null;
+        }
     }
 }
